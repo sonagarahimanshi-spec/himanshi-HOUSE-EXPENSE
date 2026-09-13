@@ -1,0 +1,3329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>House Expense</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7ff;
+            color: #25233a;
+        }
+
+
+        /* ==================================================
+           LANDING HOME PAGE
+        ================================================== */
+
+        #landingPage {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #fdf2f8,
+                    #ecfeff
+                );
+
+            padding: 30px;
+
+        }
+
+
+        .landing-content {
+
+            max-width: 1100px;
+
+        }
+
+
+        .landing-title {
+
+            font-size: 80px;
+
+            font-weight: 800;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6366f1,
+                    #a855f7,
+                    #ec4899
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+        .landing-thought {
+
+            font-size: 22px;
+
+            line-height: 1.7;
+
+            color: #64748b;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .get-started-btn {
+
+            border: none;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            padding: 15px 40px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #a855f7
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(99, 102, 241, 0.25);
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .get-started-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(99, 102, 241, 0.35);
+
+        }
+
+
+        /* ==================================================
+           MAIN APPLICATION
+        ================================================== */
+
+        #mainApp {
+
+            display: none;
+
+            min-height: 100vh;
+
+        }
+
+
+        /* ==================================================
+           SIDEBAR
+        ================================================== */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+
+            top: 0;
+
+            width: 245px;
+
+            height: 100vh;
+
+            padding: 25px 15px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #5b5fef,
+                    #7c3aed,
+                    #a855f7
+                );
+
+            color: white;
+
+            z-index: 1000;
+
+            box-shadow:
+                5px 0 25px
+                rgba(99, 102, 241, 0.15);
+
+        }
+
+
+        .brand {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            padding:
+                10px 15px 30px;
+
+        }
+
+
+        .nav-link-custom {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 14px 15px;
+
+            margin-bottom: 8px;
+
+            color: #ede9fe;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .nav-link-custom:hover,
+        .nav-link-custom.active {
+
+            background:
+                rgba(255,255,255,0.20);
+
+            color: white;
+
+        }
+
+
+        .nav-link-custom i {
+
+            font-size: 18px;
+
+        }
+
+
+        /* ==================================================
+           MAIN CONTENT
+        ================================================== */
+
+        .main-content {
+
+            margin-left: 245px;
+
+            min-height: 100vh;
+
+        }
+
+
+        /* ==================================================
+           TOPBAR
+        ================================================== */
+
+        .topbar {
+
+            height: 75px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            box-shadow:
+                0 2px 10px
+                rgba(0,0,0,0.03);
+
+        }
+
+
+        .top-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        /* NEW BACK HOME BUTTON */
+
+        .back-home-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            border: none;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            padding: 9px 15px;
+
+            border-radius: 9px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .back-home-btn:hover {
+
+            background: #e0e7ff;
+
+            color: #3730a3;
+
+        }
+
+
+        .top-title {
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #4f46e5;
+
+        }
+
+
+        .top-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            color: #64748b;
+
+        }
+
+
+        /* ONLY H PROFILE */
+
+        .profile-circle {
+
+            width: 43px;
+
+            height: 43px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #ec4899
+                );
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 5px 15px
+                rgba(99,102,241,0.25);
+
+        }
+
+
+        /* ==================================================
+           PAGE
+        ================================================== */
+
+        .page {
+
+            padding: 30px;
+
+        }
+
+
+        .welcome-title {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            color: #312e81;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .welcome-text {
+
+            color: #64748b;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* ==================================================
+           SUMMARY CARDS
+        ================================================== */
+
+        .summary-card {
+
+            position: relative;
+
+            background: white;
+
+            border: none;
+
+            border-radius: 16px;
+
+            padding: 23px;
+
+            height: 100%;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px
+                rgba(79,70,229,0.08);
+
+        }
+
+
+        .summary-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            width: 5px;
+
+            height: 100%;
+
+        }
+
+
+        .summary-card:nth-child(1)::before {
+
+            background: #22c55e;
+
+        }
+
+
+        .summary-label {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .summary-value {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+        }
+
+
+        .income-value {
+
+            color: #16a34a;
+
+        }
+
+
+        .expense-value {
+
+            color: #ef4444;
+
+        }
+
+
+        .balance-value {
+
+            color: #4f46e5;
+
+        }
+
+
+        /* ==================================================
+           SECTION CARDS
+        ================================================== */
+
+        .section-card {
+
+            background: white;
+
+            border: none;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(79,70,229,0.07);
+
+        }
+
+
+        .section-title {
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #312e81;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* ==================================================
+           FORM
+        ================================================== */
+
+        .form-label {
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #374151;
+
+        }
+
+
+        .form-control,
+        .form-select {
+
+            padding: 11px;
+
+            border-radius: 9px;
+
+            border:
+                1px solid #dbe2f0;
+
+            background: #fafbff;
+
+        }
+
+
+        .form-control:focus,
+        .form-select:focus {
+
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(139,92,246,0.12);
+
+        }
+
+
+        .btn-main {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            color: white;
+
+            border: none;
+
+            padding: 11px 22px;
+
+            border-radius: 9px;
+
+            font-weight: 600;
+
+        }
+
+
+        .btn-main:hover {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+        }
+
+
+        /* ==================================================
+           TABLE
+        ================================================== */
+
+        .table {
+
+            margin-bottom: 0;
+
+        }
+
+
+        .table th {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            background: #f8f9ff;
+
+        }
+
+
+        .table td {
+
+            vertical-align: middle;
+
+            color: #374151;
+
+        }
+
+
+        .table tbody tr:hover {
+
+            background: #faf9ff;
+
+        }
+
+
+        .delete-btn {
+
+            border: none;
+
+            background: #fee2e2;
+
+            color: #ef4444;
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+
+        .delete-btn:hover {
+
+            background: #fecaca;
+
+        }
+
+
+        /* ==================================================
+           CATEGORY
+        ================================================== */
+
+        .category-badge {
+
+            background: #ede9fe;
+
+            color: #6d28d9;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* ==================================================
+           ANALYTICS
+        ================================================== */
+
+        .chart-container {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 55px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .pie-chart {
+
+            width: 230px;
+
+            height: 230px;
+
+            border-radius: 50%;
+
+            background: #e5e7eb;
+
+            box-shadow:
+                0 10px 30px
+                rgba(79,70,229,0.10);
+
+        }
+
+
+        .legend-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .legend-dot {
+
+            width: 14px;
+
+            height: 14px;
+
+            border-radius: 50%;
+
+            display: inline-block;
+
+        }
+
+
+        .dot-1 {
+            background: #6366f1;
+        }
+
+        .dot-2 {
+            background: #ec4899;
+        }
+
+        .dot-3 {
+            background: #22c55e;
+        }
+
+        .dot-4 {
+            background: #f59e0b;
+        }
+
+
+        /* ==================================================
+           SETTINGS
+        ================================================== */
+
+        .settings-item {
+
+            padding: 20px 0;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+        }
+
+
+        .settings-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        /* ==================================================
+           EMPTY MESSAGE
+        ================================================== */
+
+        .empty-message {
+
+            text-align: center;
+
+            color: #94a3b8;
+
+            padding: 25px;
+
+        }
+
+
+        /* ==================================================
+           MOBILE NAV
+        ================================================== */
+
+        .mobile-nav {
+
+            display: none;
+
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media (max-width: 992px) {
+
+            .sidebar {
+
+                width: 210px;
+
+            }
+
+
+            .main-content {
+
+                margin-left: 210px;
+
+            }
+
+
+            .landing-title {
+
+                font-size: 58px;
+
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            #landingPage {
+
+                padding: 20px;
+
+            }
+
+
+            .landing-title {
+
+                font-size: 42px;
+
+                letter-spacing: 2px;
+
+            }
+
+
+            .landing-thought {
+
+                font-size: 17px;
+
+            }
+
+
+            .sidebar {
+
+                display: none;
+
+            }
+
+
+            .main-content {
+
+                margin-left: 0;
+
+                padding-bottom: 75px;
+
+            }
+
+
+            .topbar {
+
+                height: 65px;
+
+                padding: 0 15px;
+
+            }
+
+
+            .top-title {
+
+                font-size: 17px;
+
+            }
+
+
+            #currentDate {
+
+                display: none;
+
+            }
+
+
+            .back-home-btn span {
+
+                display: none;
+
+            }
+
+
+            .back-home-btn {
+
+                width: 38px;
+
+                height: 38px;
+
+                justify-content: center;
+
+                padding: 0;
+
+            }
+
+
+            .page {
+
+                padding: 20px 15px;
+
+            }
+
+
+            .welcome-title {
+
+                font-size: 25px;
+
+            }
+
+
+            .mobile-nav {
+
+                position: fixed;
+
+                display: flex;
+
+                bottom: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 65px;
+
+                background: white;
+
+                border-top:
+                    1px solid #e5e7eb;
+
+                justify-content:
+                    space-around;
+
+                align-items: center;
+
+                z-index: 2000;
+
+                box-shadow:
+                    0 -5px 20px
+                    rgba(0,0,0,0.05);
+
+            }
+
+
+            .mobile-nav a {
+
+                text-decoration: none;
+
+                color: #64748b;
+
+                font-size: 12px;
+
+                text-align: center;
+
+                cursor: pointer;
+
+            }
+
+
+            .mobile-nav a i {
+
+                display: block;
+
+                font-size: 20px;
+
+                margin-bottom: 2px;
+
+            }
+
+
+            .mobile-nav a.active {
+
+                color: #6366f1;
+
+            }
+
+
+            .chart-container {
+
+                flex-direction: column;
+
+            }
+
+
+            .pie-chart {
+
+                width: 180px;
+
+                height: 180px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LARGE HOME / LANDING PAGE
+===================================================== -->
+
+<section id="landingPage">
+
+    <div class="landing-content">
+
+        <h1 class="landing-title">
+            HOUSE EXPENSE
+        </h1>
+
+
+        <p class="landing-thought">
+            "Track your expenses, manage your money,
+            and build a better financial future."
+        </p>
+
+
+        <button
+            class="get-started-btn"
+            onclick="openDashboard()">
+
+            <i class="bi bi-arrow-right-circle"></i>
+
+            Get Started
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<div id="mainApp">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            HOUSE EXPENSE
+        </div>
+
+
+        <a
+            class="nav-link-custom active"
+            onclick="showSection('dashboard', this)">
+
+            <i class="bi bi-grid-fill"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a
+            class="nav-link-custom"
+            onclick="showSection('expenses', this)">
+
+            <i class="bi bi-wallet2"></i>
+
+            Expenses
+
+        </a>
+
+
+        <a
+            class="nav-link-custom"
+            onclick="showSection('analytics', this)">
+
+            <i class="bi bi-pie-chart-fill"></i>
+
+            Analytics
+
+        </a>
+
+
+        <a
+            class="nav-link-custom"
+            onclick="showSection('settings', this)">
+
+            <i class="bi bi-gear-fill"></i>
+
+            Settings
+
+        </a>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+
+            <div class="top-left">
+
+
+                <!-- NEW BACK TO HOME BUTTON -->
+
+                <button
+                    class="back-home-btn"
+                    onclick="backToHome()">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    <span>
+                        Back to Home
+                    </span>
+
+                </button>
+
+
+                <div class="top-title">
+                    House Expense
+                </div>
+
+            </div>
+
+
+
+            <div class="top-right">
+
+
+                <span id="currentDate">
+                    8 June 2026
+                </span>
+
+
+                <!-- H PROFILE ONLY -->
+
+                <div class="profile-circle">
+                    H
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+            id="dashboard"
+            class="page app-section">
+
+
+            <h1 class="welcome-title">
+                Welcome Back! 👋
+            </h1>
+
+
+            <p class="welcome-text">
+                Manage your household income and expenses easily.
+            </p>
+
+
+
+            <!-- SUMMARY -->
+
+            <div class="row g-3">
+
+
+                <div class="col-md-4">
+
+                    <div class="summary-card">
+
+                        <div class="summary-label">
+                            💰 Total Income
+                        </div>
+
+                        <div
+                            id="totalIncome"
+                            class="summary-value income-value">
+
+                            ₹0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <div class="summary-card">
+
+                        <div class="summary-label">
+                            💸 Total Expense
+                        </div>
+
+                        <div
+                            id="totalExpense"
+                            class="summary-value expense-value">
+
+                            ₹0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <div class="summary-card">
+
+                        <div class="summary-label">
+                            💳 Remaining Balance
+                        </div>
+
+                        <div
+                            id="remainingBalance"
+                            class="summary-value balance-value">
+
+                            ₹0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORMS -->
+
+            <div class="row g-3">
+
+
+                <!-- INCOME -->
+
+                <div class="col-lg-6">
+
+                    <div class="section-card">
+
+                        <h2 class="section-title">
+
+                            <i
+                                class="bi bi-plus-circle-fill text-success">
+                            </i>
+
+                            Add Income
+
+                        </h2>
+
+
+                        <form id="incomeForm">
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Income Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="incomeName"
+                                    class="form-control"
+                                    placeholder="Example: Salary"
+                                    required>
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Amount
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="incomeAmount"
+                                    class="form-control"
+                                    placeholder="Enter amount"
+                                    min="1"
+                                    required>
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="incomeDate"
+                                    class="form-control"
+                                    required>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-success">
+
+                                <i class="bi bi-plus-lg"></i>
+
+                                Add Income
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXPENSE -->
+
+                <div class="col-lg-6">
+
+                    <div class="section-card">
+
+                        <h2 class="section-title">
+
+                            <i
+                                class="bi bi-dash-circle-fill text-danger">
+                            </i>
+
+                            Add Expense
+
+                        </h2>
+
+
+                        <form id="expenseForm">
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Expense Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="expenseName"
+                                    class="form-control"
+                                    placeholder="Example: Grocery"
+                                    required>
+
+                            </div>
+
+
+                            <div class="row">
+
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Amount
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="expenseAmount"
+                                        class="form-control"
+                                        placeholder="Enter amount"
+                                        min="1"
+                                        required>
+
+                                </div>
+
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Category
+                                    </label>
+
+                                    <select
+                                        id="expenseCategory"
+                                        class="form-select"
+                                        required>
+
+                                        <option value="">
+                                            Select Category
+                                        </option>
+
+                                        <option value="Food">
+                                            🍔 Food
+                                        </option>
+
+                                        <option value="Transport">
+                                            🚗 Transport
+                                        </option>
+
+                                        <option value="Bills">
+                                            💡 Bills
+                                        </option>
+
+                                        <option value="Shopping">
+                                            🛍️ Shopping
+                                        </option>
+
+                                        <option value="Education">
+                                            📚 Education
+                                        </option>
+
+                                        <option value="Medical">
+                                            🏥 Medical
+                                        </option>
+
+                                        <option value="Entertainment">
+                                            🎮 Entertainment
+                                        </option>
+
+                                        <option value="Other">
+                                            📦 Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="expenseDate"
+                                    class="form-control"
+                                    required>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-danger">
+
+                                <i class="bi bi-plus-lg"></i>
+
+                                Add Expense
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RECENT EXPENSE -->
+
+            <div class="section-card">
+
+
+                <div
+                    class="d-flex justify-content-between
+                           align-items-center
+                           flex-wrap gap-2">
+
+
+                    <h2 class="section-title mb-0">
+                        Recent Expenses
+                    </h2>
+
+
+                    <button
+                        class="btn-main"
+                        onclick="showSectionById('expenses')">
+
+                        View All
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-responsive mt-3">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Expense
+                                </th>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="recentExpenseTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPENSES
+        ================================================== -->
+
+        <section
+            id="expenses"
+            class="page app-section"
+            style="display:none;">
+
+
+            <h1 class="welcome-title">
+                Expenses
+            </h1>
+
+
+            <p class="welcome-text">
+                View and manage all your household expenses.
+            </p>
+
+
+            <div class="section-card">
+
+
+                <div class="row g-3 mb-4">
+
+
+                    <div class="col-md-6">
+
+                        <input
+                            type="text"
+                            id="searchExpense"
+                            class="form-control"
+                            placeholder="🔍 Search expense..."
+                            oninput="displayExpenses()">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <select
+                            id="filterCategory"
+                            class="form-select"
+                            onchange="displayExpenses()">
+
+                            <option value="">
+                                All Categories
+                            </option>
+
+                            <option value="Food">
+                                Food
+                            </option>
+
+                            <option value="Transport">
+                                Transport
+                            </option>
+
+                            <option value="Bills">
+                                Bills
+                            </option>
+
+                            <option value="Shopping">
+                                Shopping
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Medical">
+                                Medical
+                            </option>
+
+                            <option value="Entertainment">
+                                Entertainment
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Expense
+                                </th>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="expenseTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="section-card">
+
+
+                <div
+                    class="d-flex justify-content-between
+                           align-items-center">
+
+
+                    <h2 class="section-title mb-0">
+                        Total Expense
+                    </h2>
+
+
+                    <h2
+                        id="expensePageTotal"
+                        class="expense-value mb-0">
+
+                        ₹0
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYTICS
+        ================================================== -->
+
+        <section
+            id="analytics"
+            class="page app-section"
+            style="display:none;">
+
+
+            <h1 class="welcome-title">
+                Analytics 📊
+            </h1>
+
+
+            <p class="welcome-text">
+                Understand your spending and expense categories.
+            </p>
+
+
+            <div class="section-card">
+
+
+                <h2 class="section-title">
+                    Expense Overview
+                </h2>
+
+
+                <div class="chart-container">
+
+
+                    <div
+                        id="pieChart"
+                        class="pie-chart">
+                    </div>
+
+
+                    <div>
+
+
+                        <div class="legend-item">
+
+                            <span
+                                class="legend-dot dot-1">
+                            </span>
+
+                            Food
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span
+                                class="legend-dot dot-2">
+                            </span>
+
+                            Bills
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span
+                                class="legend-dot dot-3">
+                            </span>
+
+                            Shopping
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span
+                                class="legend-dot dot-4">
+                            </span>
+
+                            Other
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row g-3 mt-1">
+
+
+                <div class="col-md-4">
+
+                    <div class="summary-card">
+
+                        <div class="summary-label">
+                            📋 Number of Expenses
+                        </div>
+
+                        <div
+                            id="expenseCount"
+                            class="summary-value balance-value">
+
+                            0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="summary-card">
+
+                        <div class="summary-label">
+                            🔝 Highest Expense
+                        </div>
+
+                        <div
+                            id="highestExpense"
+                            class="summary-value expense-value">
+
+                            ₹0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="summary-card">
+
+                        <div class="summary-label">
+                            📈 Average Expense
+                        </div>
+
+                        <div
+                            id="averageExpense"
+                            class="summary-value balance-value">
+
+                            ₹0
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SETTINGS
+        ================================================== -->
+
+        <section
+            id="settings"
+            class="page app-section"
+            style="display:none;">
+
+
+            <h1 class="welcome-title">
+                Settings ⚙️
+            </h1>
+
+
+            <p class="welcome-text">
+                Manage your website preferences.
+            </p>
+
+
+            <div class="section-card">
+
+
+                <h2 class="section-title">
+                    General Settings
+                </h2>
+
+
+                <!-- CURRENCY ONLY -->
+
+                <div class="settings-item">
+
+
+                    <div class="row align-items-center">
+
+
+                        <div class="col-md-8">
+
+                            <strong>
+                                💰 Currency
+                            </strong>
+
+                            <p class="text-muted mb-0">
+
+                                Select the currency used
+                                for your expenses.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="col-md-4 mt-2 mt-md-0">
+
+                            <select
+                                id="currencySelect"
+                                class="form-select"
+                                onchange="changeCurrency()">
+
+                                <option value="₹">
+                                    Indian Rupee (₹)
+                                </option>
+
+                                <option value="$">
+                                    US Dollar ($)
+                                </option>
+
+                                <option value="€">
+                                    Euro (€)
+                                </option>
+
+                                <option value="£">
+                                    British Pound (£)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- WEBSITE INFORMATION -->
+
+                <div class="settings-item">
+
+                    <strong>
+                        🏠 Website
+                    </strong>
+
+                    <p class="text-muted mb-0">
+
+                        House Expense helps you record
+                        and manage your daily household
+                        expenses.
+
+                    </p>
+
+                </div>
+
+
+                <!-- IMPORTANT:
+                     NO PROFILE SECTION HERE -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =================================================
+         MOBILE NAVIGATION
+    ================================================== -->
+
+    <nav class="mobile-nav">
+
+
+        <a
+            class="active"
+            onclick="showSectionMobile('dashboard', this)">
+
+            <i class="bi bi-house-fill"></i>
+
+            Home
+
+        </a>
+
+
+        <a
+            onclick="showSectionMobile('expenses', this)">
+
+            <i class="bi bi-wallet-fill"></i>
+
+            Expenses
+
+        </a>
+
+
+        <a
+            onclick="showSectionMobile('analytics', this)">
+
+            <i class="bi bi-bar-chart-fill"></i>
+
+            Analytics
+
+        </a>
+
+
+        <a
+            onclick="showSectionMobile('settings', this)">
+
+            <i class="bi bi-gear-fill"></i>
+
+            Settings
+
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<script>
+
+
+    /* ==================================================
+       DATA
+    ================================================== */
+
+    let expenses =
+        JSON.parse(
+            localStorage.getItem("houseExpenses")
+        ) || [];
+
+
+    let incomes =
+        JSON.parse(
+            localStorage.getItem("houseIncome")
+        ) || [];
+
+
+    let currency =
+        localStorage.getItem("houseCurrency")
+        || "₹";
+
+
+
+    /* ==================================================
+       OPEN DASHBOARD
+    ================================================== */
+
+    function openDashboard() {
+
+        document.getElementById("landingPage")
+            .style.display = "none";
+
+
+        document.getElementById("mainApp")
+            .style.display = "block";
+
+
+        updateAll();
+
+    }
+
+
+
+    /* ==================================================
+       NEW BACK TO HOME FUNCTION
+    ================================================== */
+
+    function backToHome() {
+
+        document.getElementById("mainApp")
+            .style.display = "none";
+
+
+        document.getElementById("landingPage")
+            .style.display = "flex";
+
+
+        window.scrollTo(0, 0);
+
+    }
+
+
+
+    /* ==================================================
+       DATE
+    ================================================== */
+
+    function setDefaultDates() {
+
+        const today =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+
+        document.getElementById("incomeDate")
+            .value = today;
+
+
+        document.getElementById("expenseDate")
+            .value = today;
+
+    }
+
+
+
+    function setCurrentDate() {
+
+        const today =
+            new Date();
+
+
+        const options = {
+
+            day: "numeric",
+
+            month: "long",
+
+            year: "numeric"
+
+        };
+
+
+        document.getElementById("currentDate")
+            .textContent =
+            today.toLocaleDateString(
+                "en-IN",
+                options
+            );
+
+    }
+
+
+
+    /* ==================================================
+       CURRENCY
+    ================================================== */
+
+    function changeCurrency() {
+
+        currency =
+            document.getElementById(
+                "currencySelect"
+            ).value;
+
+
+        localStorage.setItem(
+            "houseCurrency",
+            currency
+        );
+
+
+        updateAll();
+
+    }
+
+
+
+    /* ==================================================
+       ADD INCOME
+    ================================================== */
+
+    document
+        .getElementById("incomeForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById(
+                        "incomeName"
+                    ).value.trim();
+
+
+                const amount =
+                    Number(
+                        document.getElementById(
+                            "incomeAmount"
+                        ).value
+                    );
+
+
+                const date =
+                    document.getElementById(
+                        "incomeDate"
+                    ).value;
+
+
+                if (
+                    name === "" ||
+                    amount <= 0 ||
+                    date === ""
+                ) {
+
+                    alert(
+                        "Please enter valid income details."
+                    );
+
+                    return;
+
+                }
+
+
+                const income = {
+
+                    id: Date.now(),
+
+                    name: name,
+
+                    amount: amount,
+
+                    date: date
+
+                };
+
+
+                incomes.push(income);
+
+
+                localStorage.setItem(
+                    "houseIncome",
+                    JSON.stringify(incomes)
+                );
+
+
+                document
+                    .getElementById("incomeForm")
+                    .reset();
+
+
+                setDefaultDates();
+
+
+                updateAll();
+
+
+                alert(
+                    "Income added successfully! 💰"
+                );
+
+            }
+        );
+
+
+
+    /* ==================================================
+       ADD EXPENSE
+    ================================================== */
+
+    document
+        .getElementById("expenseForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById(
+                        "expenseName"
+                    ).value.trim();
+
+
+                const amount =
+                    Number(
+                        document.getElementById(
+                            "expenseAmount"
+                        ).value
+                    );
+
+
+                const category =
+                    document.getElementById(
+                        "expenseCategory"
+                    ).value;
+
+
+                const date =
+                    document.getElementById(
+                        "expenseDate"
+                    ).value;
+
+
+                if (name === "") {
+
+                    alert(
+                        "Please enter expense name."
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    isNaN(amount) ||
+                    amount <= 0
+                ) {
+
+                    alert(
+                        "Please enter a valid amount."
+                    );
+
+                    return;
+
+                }
+
+
+                if (category === "") {
+
+                    alert(
+                        "Please select a category."
+                    );
+
+                    return;
+
+                }
+
+
+                if (date === "") {
+
+                    alert(
+                        "Please select a date."
+                    );
+
+                    return;
+
+                }
+
+
+                const expense = {
+
+                    id: Date.now(),
+
+                    name: name,
+
+                    amount: amount,
+
+                    category: category,
+
+                    date: date
+
+                };
+
+
+                expenses.push(expense);
+
+
+                localStorage.setItem(
+                    "houseExpenses",
+                    JSON.stringify(expenses)
+                );
+
+
+                document
+                    .getElementById("expenseForm")
+                    .reset();
+
+
+                setDefaultDates();
+
+
+                updateAll();
+
+
+                alert(
+                    "Expense added successfully! 💸"
+                );
+
+            }
+        );
+
+
+
+    /* ==================================================
+       TOTAL INCOME
+    ================================================== */
+
+    function calculateIncome() {
+
+        return incomes.reduce(
+            function(total, income) {
+
+                return total +
+                    Number(income.amount);
+
+            },
+            0
+        );
+
+    }
+
+
+
+    /* ==================================================
+       TOTAL EXPENSE
+    ================================================== */
+
+    function calculateExpense() {
+
+        return expenses.reduce(
+            function(total, expense) {
+
+                return total +
+                    Number(expense.amount);
+
+            },
+            0
+        );
+
+    }
+
+
+
+    /* ==================================================
+       UPDATE SUMMARY
+    ================================================== */
+
+    function updateSummary() {
+
+        const income =
+            calculateIncome();
+
+
+        const expense =
+            calculateExpense();
+
+
+        const balance =
+            income - expense;
+
+
+        document.getElementById(
+            "totalIncome"
+        ).textContent =
+            currency +
+            income.toLocaleString("en-IN");
+
+
+        document.getElementById(
+            "totalExpense"
+        ).textContent =
+            currency +
+            expense.toLocaleString("en-IN");
+
+
+        document.getElementById(
+            "remainingBalance"
+        ).textContent =
+            currency +
+            balance.toLocaleString("en-IN");
+
+
+        document.getElementById(
+            "expensePageTotal"
+        ).textContent =
+            currency +
+            expense.toLocaleString("en-IN");
+
+    }
+
+
+
+    /* ==================================================
+       DISPLAY ALL EXPENSES
+    ================================================== */
+
+    function displayExpenses() {
+
+        const table =
+            document.getElementById(
+                "expenseTable"
+            );
+
+
+        const search =
+            document.getElementById(
+                "searchExpense"
+            ).value
+            .toLowerCase();
+
+
+        const filter =
+            document.getElementById(
+                "filterCategory"
+            ).value;
+
+
+        const filteredExpenses =
+            expenses.filter(
+                function(expense) {
+
+                    const searchMatch =
+                        expense.name
+                            .toLowerCase()
+                            .includes(search);
+
+
+                    const categoryMatch =
+                        filter === "" ||
+                        expense.category === filter;
+
+
+                    return (
+                        searchMatch &&
+                        categoryMatch
+                    );
+
+                }
+            );
+
+
+        table.innerHTML = "";
+
+
+        if (
+            filteredExpenses.length === 0
+        ) {
+
+            table.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="5"
+                        class="empty-message">
+
+                        No expense records found.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        filteredExpenses
+            .slice()
+            .reverse()
+            .forEach(
+                function(expense) {
+
+                    const row =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    row.innerHTML = `
+
+                        <td>
+                            ${formatDate(expense.date)}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(expense.name)}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="category-badge">
+
+                                ${escapeHTML(
+                                    expense.category
+                                )}
+
+                            </span>
+
+                        </td>
+
+                        <td
+                            class="expense-value fw-bold">
+
+                            ${currency}${Number(
+                                expense.amount
+                            ).toLocaleString("en-IN")}
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteExpense(
+                                    ${expense.id}
+                                )">
+
+                                <i
+                                    class="bi bi-trash-fill">
+                                </i>
+
+                            </button>
+
+                        </td>
+
+                    `;
+
+
+                    table.appendChild(row);
+
+                }
+            );
+
+    }
+
+
+
+    /* ==================================================
+       RECENT EXPENSES
+    ================================================== */
+
+    function displayRecentExpenses() {
+
+        const table =
+            document.getElementById(
+                "recentExpenseTable"
+            );
+
+
+        table.innerHTML = "";
+
+
+        const recent =
+            expenses
+                .slice()
+                .reverse()
+                .slice(0, 5);
+
+
+        if (recent.length === 0) {
+
+            table.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="empty-message">
+
+                        No expenses added yet.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        recent.forEach(
+            function(expense) {
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML = `
+
+                    <td>
+                        ${formatDate(expense.date)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(expense.name)}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="category-badge">
+
+                            ${escapeHTML(
+                                expense.category
+                            )}
+
+                        </span>
+
+                    </td>
+
+                    <td
+                        class="expense-value fw-bold">
+
+                        ${currency}${Number(
+                            expense.amount
+                        ).toLocaleString("en-IN")}
+
+                    </td>
+
+                `;
+
+
+                table.appendChild(row);
+
+            }
+        );
+
+    }
+
+
+
+    /* ==================================================
+       DELETE EXPENSE
+    ================================================== */
+
+    function deleteExpense(id) {
+
+        const confirmation =
+            confirm(
+                "Are you sure you want to delete this expense?"
+            );
+
+
+        if (!confirmation) {
+
+            return;
+
+        }
+
+
+        expenses =
+            expenses.filter(
+                function(expense) {
+
+                    return expense.id !== id;
+
+                }
+            );
+
+
+        localStorage.setItem(
+            "houseExpenses",
+            JSON.stringify(expenses)
+        );
+
+
+        updateAll();
+
+    }
+
+
+
+    /* ==================================================
+       ANALYTICS
+    ================================================== */
+
+    function updateAnalytics() {
+
+        const count =
+            expenses.length;
+
+
+        document.getElementById(
+            "expenseCount"
+        ).textContent = count;
+
+
+        if (expenses.length === 0) {
+
+            document.getElementById(
+                "highestExpense"
+            ).textContent =
+                currency + "0";
+
+
+            document.getElementById(
+                "averageExpense"
+            ).textContent =
+                currency + "0";
+
+
+            document.getElementById(
+                "pieChart"
+            ).style.background =
+                "#e5e7eb";
+
+
+            return;
+
+        }
+
+
+        const amounts =
+            expenses.map(
+                function(expense) {
+
+                    return Number(
+                        expense.amount
+                    );
+
+                }
+            );
+
+
+        const highest =
+            Math.max(...amounts);
+
+
+        const total =
+            calculateExpense();
+
+
+        const average =
+            total /
+            expenses.length;
+
+
+        document.getElementById(
+            "highestExpense"
+        ).textContent =
+            currency +
+            highest.toLocaleString("en-IN");
+
+
+        document.getElementById(
+            "averageExpense"
+        ).textContent =
+            currency +
+            Math.round(
+                average
+            ).toLocaleString("en-IN");
+
+
+        updatePieChart();
+
+    }
+
+
+
+    /* ==================================================
+       PIE CHART
+    ================================================== */
+
+    function updatePieChart() {
+
+        const categoryTotals = {};
+
+
+        expenses.forEach(
+            function(expense) {
+
+                if (
+                    !categoryTotals[
+                        expense.category
+                    ]
+                ) {
+
+                    categoryTotals[
+                        expense.category
+                    ] = 0;
+
+                }
+
+
+                categoryTotals[
+                    expense.category
+                ] += Number(
+                    expense.amount
+                );
+
+            }
+        );
+
+
+        const total =
+            calculateExpense();
+
+
+        if (total === 0) {
+
+            document.getElementById(
+                "pieChart"
+            ).style.background =
+                "#e5e7eb";
+
+            return;
+
+        }
+
+
+        const colors = [
+
+            "#6366f1",
+
+            "#ec4899",
+
+            "#22c55e",
+
+            "#f59e0b",
+
+            "#06b6d4",
+
+            "#8b5cf6",
+
+            "#ef4444",
+
+            "#14b8a6"
+
+        ];
+
+
+        let currentDegree = 0;
+
+        let gradientParts = [];
+
+
+        Object.values(
+            categoryTotals
+        ).forEach(
+            function(value, index) {
+
+                const degree =
+                    (value / total) *
+                    360;
+
+
+                const nextDegree =
+                    currentDegree +
+                    degree;
+
+
+                gradientParts.push(
+
+                    colors[
+                        index %
+                        colors.length
+                    ] +
+
+                    " " +
+
+                    currentDegree +
+
+                    "deg " +
+
+                    nextDegree +
+
+                    "deg"
+
+                );
+
+
+                currentDegree =
+                    nextDegree;
+
+            }
+        );
+
+
+        document.getElementById(
+            "pieChart"
+        ).style.background =
+            "conic-gradient(" +
+            gradientParts.join(", ") +
+            ")";
+
+    }
+
+
+
+    /* ==================================================
+       DESKTOP NAVIGATION
+    ================================================== */
+
+    function showSection(
+        sectionId,
+        clickedElement
+    ) {
+
+        document
+            .querySelectorAll(".app-section")
+            .forEach(
+                function(section) {
+
+                    section.style.display =
+                        "none";
+
+                }
+            );
+
+
+        document.getElementById(
+            sectionId
+        ).style.display =
+            "block";
+
+
+        document
+            .querySelectorAll(
+                ".nav-link-custom"
+            )
+            .forEach(
+                function(link) {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        if (clickedElement) {
+
+            clickedElement.classList.add(
+                "active"
+            );
+
+        }
+
+
+        window.scrollTo(0, 0);
+
+    }
+
+
+
+    /* ==================================================
+       VIEW ALL
+    ================================================== */
+
+    function showSectionById(
+        sectionId
+    ) {
+
+        document
+            .querySelectorAll(".app-section")
+            .forEach(
+                function(section) {
+
+                    section.style.display =
+                        "none";
+
+                }
+            );
+
+
+        document.getElementById(
+            sectionId
+        ).style.display =
+            "block";
+
+
+        document
+            .querySelectorAll(
+                ".nav-link-custom"
+            )
+            .forEach(
+                function(link) {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        window.scrollTo(0, 0);
+
+    }
+
+
+
+    /* ==================================================
+       MOBILE NAVIGATION
+    ================================================== */
+
+    function showSectionMobile(
+        sectionId,
+        clickedElement
+    ) {
+
+        showSectionById(sectionId);
+
+
+        document
+            .querySelectorAll(
+                ".mobile-nav a"
+            )
+            .forEach(
+                function(link) {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        clickedElement.classList.add(
+            "active"
+        );
+
+    }
+
+
+
+    /* ==================================================
+       DATE FORMAT
+    ================================================== */
+
+    function formatDate(
+        dateString
+    ) {
+
+        if (!dateString) {
+
+            return "";
+
+        }
+
+
+        const date =
+            new Date(
+                dateString +
+                "T00:00:00"
+            );
+
+
+        return date.toLocaleDateString(
+            "en-IN",
+            {
+
+                day: "2-digit",
+
+                month: "short",
+
+                year: "numeric"
+
+            }
+        );
+
+    }
+
+
+
+    /* ==================================================
+       HTML SECURITY
+    ================================================== */
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+
+        div.textContent = text;
+
+
+        return div.innerHTML;
+
+    }
+
+
+
+    /* ==================================================
+       UPDATE EVERYTHING
+    ================================================== */
+
+    function updateAll() {
+
+        updateSummary();
+
+        displayExpenses();
+
+        displayRecentExpenses();
+
+        updateAnalytics();
+
+
+        document.getElementById(
+            "currencySelect"
+        ).value = currency;
+
+    }
+
+
+
+    /* ==================================================
+       START WEBSITE
+    ================================================== */
+
+    setDefaultDates();
+
+    setCurrentDate();
+
+
+    document.getElementById(
+        "currencySelect"
+    ).value = currency;
+
+
+    updateAll();
+
+
+</script>
+
+
+</body>
+
+</html>
